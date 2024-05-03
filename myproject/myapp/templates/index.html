@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проста CAPTCHA</title>
+    <style>
+        .captcha-box {
+            display: inline-block;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .captcha-image {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Проста CAPTCHA</h2>
+    <div class="captcha-box">
+        <span class="captcha-number">{{ captcha_number }}</span><br>
+        <input type="text" id="captcha_input" name="captcha_input" placeholder="Введіть число"><br><br>
+        <button onclick="validateCaptcha()">Підтвердити</button>
+    </div>
+
+    <script>
+        function validateCaptcha() {
+            var captcha_input = document.getElementById("captcha_input").value;
+            var captcha_number = document.querySelector(".captcha-number").innerText;
+
+            if (captcha_input === captcha_number) {
+                alert("CAPTCHA введено вірно!");
+            } else {
+                alert("Введено невірне число. Спробуйте ще раз.");
+            }
+        }
+    </script>
+</body>
+</html>
